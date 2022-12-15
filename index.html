@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/pages/index.css" />
+    <title>Mesto</title>
+  </head>
+  <body class="root">
+    <header class="header">
+      <img class="logo" alt="" src="/images/logo.svg" />
+    </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__container">
+          <img
+            class="profile__avatar"
+            alt="Аватар"
+            src="images/IMG_20210306_104200_820.jpg"
+          />
+          <div class="profile__info">
+            <div class="profile__info-text">
+              <h1 class="profile__info-name">Юлия Ковылина</h1>
+              <p class="profile__info-job">Путешественник</p>
+            </div>
+            <button class="edit-button" type="button"></button>
+          </div>
+          <button class="add-button"></button>
+        </div>
+      </section>
+
+      <section class="elements">
+        <div class="cards">
+          <article class="card">
+            <div class="card__top card__top_kazansky"></div>
+            <div class="card__bottom">
+              <p class="card__text">Исаакиевский собор</p>
+              <button class="likeButton" type="button"></button>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__top card__top_dvortsovaia"></div>
+            <div class="card__bottom">
+              <p class="card__text">Дворцовая площадь</p>
+              <button class="likeButton" type="button"></button>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__top card__top_kanaly"></div>
+            <div class="card__bottom">
+              <p class="card__text">Реки и каналы</p>
+              <button class="likeButton" type="button"></button>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__top card__top_petergof"></div>
+            <div class="card__bottom">
+              <p class="card__text">Петергоф</p>
+              <button class="likeButton" type="button"></button>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__top card__top_bridge"></div>
+            <div class="card__bottom">
+              <p class="card__text">Мосты</p>
+              <button class="likeButton" type="button"></button>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__top card__top_roofs"></div>
+            <div class="card__bottom">
+              <p class="card__text">Дворы и крыши</p>
+              <button class="likeButton" type="button"></button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+      <div class="popup__container">
+        <button type="button" class="closeButton"></button>
+        <form class="edit-form">
+          <h1 class="">Редактировать профиль</h1>
+          <div>
+            <input type="text" />
+            <input type="text" />
+          </div>
+          <button type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
