@@ -10,6 +10,12 @@
     line-height: 22px;
     border-radius: 2px;
     padding: 0;
+    transition: .3s linear;
+}
+
+.submit-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 580px) {
