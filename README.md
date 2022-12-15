@@ -2,6 +2,8 @@
 
 Этот проект - одностраничный сайт с фотографиями интересных мест России, которые я лично хотела бы посетить или уже посещала и хочу поделиться впечатлениями. На главной странице фотографии Санкт-Петербурга.
 
+- [Ссылка на проект](https://github.com/yuliakovylina/mesto-project-bootcamp.git)
+
 ### Технологии
 
 - Адаптивная верстка (1280, 320)
@@ -9,4 +11,5 @@
 - Использование модального окна
 
 - [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
-- [Ссылка на проект](https://github.com/yuliakovylina/mesto-project-bootcamp.git)
+
+<img width="1207" alt="Снимок экрана 2022-12-15 в 19 55 11" src="https://user-images.githubusercontent.com/61360526/207922989-5a49b56a-215e-493a-9004-73419619592c.png">
