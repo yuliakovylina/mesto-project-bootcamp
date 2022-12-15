@@ -1,0 +1,4 @@
+.edit-form__inputs {
+    display: flex;
+    flex-direction: column;
+}
