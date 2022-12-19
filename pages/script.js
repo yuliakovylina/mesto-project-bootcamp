@@ -48,6 +48,7 @@ function addCard (name, src) {
     
     CardElement.querySelector('.card__text').textContent = name;
     CardElement.querySelector('.card__top').src = src;
+    CardElement.querySelector('.card__like-button').addEventListener('click', toggleLike); 
     return CardElement;
 }
 //ДОБАВИТЬ ИЗНАЧАЛЬНЫЙ МАССИВ С КАРТИНКАМИ НА СТРАНИЦУ
@@ -62,6 +63,12 @@ function openPopup(popup) {
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
 }
+
+//КНОПКА ЛАЙКА
+function toggleLike(evt){
+    evt.target.classList.toggle('card__like-button_active');
+}
+
 //ОБРАБОТЧИК ФОРМЫ ПРОФИЛЯ
 function handleEditFormSubmit(evt) {
     evt.preventDefault();
@@ -69,6 +76,9 @@ function handleEditFormSubmit(evt) {
     NameProfile.textContent = NameInput.value;
     closePopup(EditPopup);
 }
+//ОТПРАВКА ФОРМЫ ПРОФИЛЯ
+EditForm.addEventListener('submit', handleEditFormSubmit);
+
 //РЕДАКТИРОВАНИЕ ПРОФИЛЯ
 EditButton.addEventListener('click', function () {
    openPopup(EditPopup);
@@ -79,8 +89,7 @@ EditButton.addEventListener('click', function () {
 CloseButton.addEventListener('click', function () {
     closePopup(Popup);
 })
-//ОТПРАВКА ФОРМЫ ПРОФИЛЯ
-EditForm.addEventListener('submit', handleEditFormSubmit);
+
 //ДОБАВЛЕНИЕ КАРТОЧКИ
 AddButton.addEventListener('click', function () {
     openPopup(CardPopup);
@@ -89,6 +98,7 @@ AddButton.addEventListener('click', function () {
 CardClose.addEventListener('click', function () {
     closePopup(CardPopup);
 })
+//ОБРАБОТЧИК ФОРМЫ КАРТОЧКИ
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const CardName = document.querySelector('.edit-form__input_placeName');
@@ -96,6 +106,8 @@ function handleCardFormSubmit(evt) {
     closePopup(CardPopup);
     CardsContainer.prepend(addCard(CardName.value, CardLink.value));
 }
-
+//ОТПРАВКА ФОРМЫ КАРТОЧКИ
 CardForm.addEventListener('submit', handleCardFormSubmit);
+
+
 
