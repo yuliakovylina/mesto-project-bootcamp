@@ -103,7 +103,7 @@
 
     <template id="card">
       <article class="card">
-        <img class="card__top" src="" alt="" />
+        <img class="card__top" />
         <div class="card__bottom">
           <h4 class="card__text"></h4>
           <button class="card__like-button" type="button"></button>
@@ -155,18 +155,18 @@
           id="card-close"
         ></button>
         <h2 class="popup__heading">Новое место</h2>
-        <form class="edit-form" name="editForm">
+        <form class="edit-form" name="cardForm" id="card-form">
           <div class="edit-form__inputs">
             <input
               type="text"
-              class="edit-form__input edit-form__input_name"
+              class="edit-form__input edit-form__input_placeName"
               value=""
               name="name"
               placeholder="Название"
             />
             <input
               type="text"
-              class="edit-form__input edit-form__input_job"
+              class="edit-form__input edit-form__input_placeSrc"
               value=""
               name="job"
               placeholder="Ссылка на картинку"
