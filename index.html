@@ -31,7 +31,7 @@
       </section>
 
       <section class="cards">
-        <article class="card">
+        <!--<article class="card">
           <img
             class="card__top card__top_kazansky"
             src="./images/kazansky.jpg"
@@ -97,12 +97,24 @@
             <h4 class="card__text">Дворы и крыши</h4>
             <button class="card__like-button" type="button"></button>
           </div>
-        </article>
+        </article>-->
       </section>
     </main>
+
+    <template id="card">
+      <article class="card">
+        <img class="card__top" src="" alt="" />
+        <div class="card__bottom">
+          <h4 class="card__text"></h4>
+          <button class="card__like-button" type="button"></button>
+        </div>
+      </article>
+    </template>
+
     <footer class="footer">
       <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
     </footer>
+
     <div class="popup" id="edit-popup">
       <div class="popup__container">
         <button

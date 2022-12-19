@@ -10,6 +10,8 @@ const NameInput = document.querySelector('.edit-form__input_name');
 const JobInput = document.querySelector('.edit-form__input_job');
 const AddButton = document.querySelector('.profile__add-button');
 const CardClose = document.querySelector('#card-close');
+const CardsContainer = document.querySelector('.cards');
+
 
 const InitialCards = [
     {
@@ -37,6 +39,17 @@ const InitialCards = [
         src: '../images/roofs.jpg'
     },
 ]
+
+const CardTemplate = document.querySelector('#card').content;
+const CardElement = CardTemplate.querySelector('.card').cloneNode(true);
+
+InitialCards.forEach(item) {
+    CardElement.querySelector('.card__top').src = item.src;
+    CardElement.querySelector('.card__text').textContent = item.name;
+    CardsContainer.append(CardElement);
+}
+
+
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
