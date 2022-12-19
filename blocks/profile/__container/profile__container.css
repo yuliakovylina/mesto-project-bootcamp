@@ -9,6 +9,7 @@
     .profile__container {
         flex-direction: column;
         max-width: 282px;
-        margin: 42px auto 36px;
+        margin-top: 42px;
+        margin-bottom: 36px;
     }
 }
