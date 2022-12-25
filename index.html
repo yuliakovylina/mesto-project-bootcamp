@@ -43,7 +43,7 @@
           </div>
         </article>
 
-        <article class="card">
+         <article class="card">
           <img
             class="card__top card__top_dvortsovaia"
             src="./images/dvortsovaia.jpg"
@@ -103,6 +103,7 @@
 
     <template id="card">
       <article class="card">
+        <button type="button" class="card__delete"></button>
         <img class="card__top" />
         <div class="card__bottom">
           <h4 class="card__text"></h4>
@@ -178,6 +179,17 @@
         </form>
       </div>
     </div>
+
+    <div class="popup" id="image-popup">
+      <button
+        type="button"
+        class="popup__close-button"
+        id="image-close"
+      ></button>
+      <img class="popup__image-container" />
+      <h4 class="popup__image-title">Петергоф</h4>
+    </div>
+
     <script src="./pages/script.js"></script>
   </body>
 </html>

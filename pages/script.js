@@ -12,6 +12,7 @@ const JobInput = document.querySelector('.edit-form__input_job');
 const AddButton = document.querySelector('.profile__add-button');
 const CardClose = document.querySelector('#card-close');
 const CardsContainer = document.querySelector('.cards');
+const ImagePopup = document.querySelector('#image-popup');
 
 
 const InitialCards = [
@@ -48,7 +49,9 @@ function addCard (name, src) {
     
     CardElement.querySelector('.card__text').textContent = name;
     CardElement.querySelector('.card__top').src = src;
-    CardElement.querySelector('.card__like-button').addEventListener('click', toggleLike); 
+    CardElement.querySelector('.card__like-button').addEventListener('click', toggleLike);
+    CardElement.querySelector('.card__delete').addEventListener('click', removeCard); 
+    CardElement.querySelector('.card__top').addEventListener('click', openImagePopup);
     return CardElement;
 }
 //ДОБАВИТЬ ИЗНАЧАЛЬНЫЙ МАССИВ С КАРТИНКАМИ НА СТРАНИЦУ
@@ -67,6 +70,12 @@ function closePopup(popup) {
 //КНОПКА ЛАЙКА
 function toggleLike(evt){
     evt.target.classList.toggle('card__like-button_active');
+}
+
+//ФУНКЦИЯ УДАЛЕНИЯ КАРТОЧКИ
+function removeCard(evt) {
+    const card = evt.target.closest('.card');
+    card.remove();
 }
 
 //ОБРАБОТЧИК ФОРМЫ ПРОФИЛЯ
@@ -108,6 +117,19 @@ function handleCardFormSubmit(evt) {
 }
 //ОТПРАВКА ФОРМЫ КАРТОЧКИ
 CardForm.addEventListener('submit', handleCardFormSubmit);
+
+//ФУНКЦИЯ ОТКРЫТИЯ ПОПАП_ИЗОБРАЖЕНИЯ
+function openImagePopup(evt) {
+    const card = evt.target;
+    const Image = ImagePopup.querySelector('.popup__image-container');
+    const ImageName = ImagePopup.querySelector('.popup__image-title');
+    Image.src = card.src;
+    ImageName.textContent = card.name;
+    openPopup(ImagePopup);
+}
+
+
+//ОТКРЫТИЕ ПОПАП_ИЗОБРАЖЕНИЯ
 
 
 
