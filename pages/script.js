@@ -51,7 +51,18 @@ function addCard (name, src) {
     CardElement.querySelector('.card__top').src = src;
     CardElement.querySelector('.card__like-button').addEventListener('click', toggleLike);
     CardElement.querySelector('.card__delete').addEventListener('click', removeCard); 
-    CardElement.querySelector('.card__top').addEventListener('click', openImagePopup);
+    CardElement.querySelector('.card__top').addEventListener('click', function () {
+        const Image = ImagePopup.querySelector('.popup__image-container');
+        const ImageName = ImagePopup.querySelector('.popup__image-title');
+        const ImageCloseButton = ImagePopup.querySelector('.popup__close-button_enlarge');
+        Image.src = CardElement.querySelector('.card__top').src;
+        ImageName.textContent = CardElement.querySelector('.card__text').textContent;
+        openPopup(ImagePopup);
+        ImageCloseButton.addEventListener('click', function(){
+            document.querySelector('.popup_opened').classList.remove('popup_opened');
+        });
+
+    });
     return CardElement;
 }
 //ДОБАВИТЬ ИЗНАЧАЛЬНЫЙ МАССИВ С КАРТИНКАМИ НА СТРАНИЦУ
@@ -119,17 +130,21 @@ function handleCardFormSubmit(evt) {
 CardForm.addEventListener('submit', handleCardFormSubmit);
 
 //ФУНКЦИЯ ОТКРЫТИЯ ПОПАП_ИЗОБРАЖЕНИЯ
-function openImagePopup(evt) {
-    const card = evt.target;
-    const Image = ImagePopup.querySelector('.popup__image-container');
-    const ImageName = ImagePopup.querySelector('.popup__image-title');
-    Image.src = card.src;
-    ImageName.textContent = card.name;
-    openPopup(ImagePopup);
-}
+//function openImagePopup(evt) {
+  //  const card = evt.target;
+    //const Image = ImagePopup.querySelector('.popup__image-container');
+    //const ImageName = ImagePopup.querySelector('.popup__image-title');
+    //Image.src = card.src;
+    //ImageName.textContent = card.name;
+    //openPopup(ImagePopup);
+//}
 
 
 //ОТКРЫТИЕ ПОПАП_ИЗОБРАЖЕНИЯ
+
+function togglePopup(evt) {
+    evt.target.classList.toggle('popup_opened');
+}
 
 
 
