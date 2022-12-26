@@ -31,7 +31,7 @@
       </section>
 
       <section class="cards">
-        <article class="card">
+        <!--<article class="card">
           <img
             class="card__top card__top_kazansky"
             src="./images/kazansky.jpg"
@@ -43,7 +43,7 @@
           </div>
         </article>
 
-        <article class="card">
+         <article class="card">
           <img
             class="card__top card__top_dvortsovaia"
             src="./images/dvortsovaia.jpg"
@@ -97,12 +97,25 @@
             <h4 class="card__text">Дворы и крыши</h4>
             <button class="card__like-button" type="button"></button>
           </div>
-        </article>
+        </article>-->
       </section>
     </main>
+
+    <template id="card">
+      <article class="card">
+        <button type="button" class="card__delete"></button>
+        <img class="card__top" />
+        <div class="card__bottom">
+          <h4 class="card__text"></h4>
+          <button class="card__like-button" type="button"></button>
+        </div>
+      </article>
+    </template>
+
     <footer class="footer">
       <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
     </footer>
+
     <div class="popup" id="edit-popup">
       <div class="popup__container">
         <button
@@ -143,18 +156,18 @@
           id="card-close"
         ></button>
         <h2 class="popup__heading">Новое место</h2>
-        <form class="edit-form" name="editForm">
+        <form class="edit-form" name="cardForm" id="card-form">
           <div class="edit-form__inputs">
             <input
               type="text"
-              class="edit-form__input edit-form__input_name"
+              class="edit-form__input edit-form__input_placeName"
               value=""
               name="name"
               placeholder="Название"
             />
             <input
               type="text"
-              class="edit-form__input edit-form__input_job"
+              class="edit-form__input edit-form__input_placeSrc"
               value=""
               name="job"
               placeholder="Ссылка на картинку"
@@ -166,6 +179,18 @@
         </form>
       </div>
     </div>
+
+    <div class="popup popup_image" id="image-popup">
+      <div class="popup__enlarge">
+      <button
+        type="button"
+        class="popup__close-button popup__close-button_enlarge"
+        id="image-close"
+      ></button>
+      <img class="popup__image-container" />
+      <h4 class="popup__image-title">Петергоф</h4>
+    </div>
+
     <script src="./pages/script.js"></script>
   </body>
 </html>
