@@ -18,27 +18,27 @@ const ImagePopup = document.querySelector('#image-popup');
 const InitialCards = [
     {
         name: 'Мосты',
-        src: '../images/bridge.jpg'
+        src: '/images/bridge.jpg'
     },
     {
         name: 'Дворцовая площадь',
-        src: '../images/dvortsovaia.jpg'
+        src: '/images/dvortsovaia.jpg'
     },
     {
         name: 'Реки и каналы',
-        src: '../images/kanaly.jpg'
+        src: '/images/kanaly.jpg'
     },
     {
         name: 'Казанский собор',
-        src: '../images/kazansky.jpg'
+        src: '/images/kazansky.jpg'
     },
     {
         name: 'Петергоф',
-        src: '../images/petergof.jpg'
+        src: '/images/petergof.jpg'
     },
     {
         name: 'Дворы и крыши',
-        src: '../images/roofs.jpg'
+        src: '/images/roofs.jpg'
     },
 ]
 
