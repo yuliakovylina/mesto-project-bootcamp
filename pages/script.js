@@ -51,6 +51,7 @@ function addCard (name, src) {
     
     cardElement.querySelector('.card__text').textContent = name;
     cardElement.querySelector('.card__top').src = src;
+    cardElement.querySelector('.card__top').alt = name;
     cardElement.querySelector('.card__like-button').addEventListener('click', toggleLike);
     cardElement.querySelector('.card__delete').addEventListener('click', removeCard); 
     cardElement.querySelector('.card__top').addEventListener('click', function () {
@@ -58,10 +59,12 @@ function addCard (name, src) {
         const imageName = imagePopup.querySelector('.popup__image-title');
         const imageCloseButton = imagePopup.querySelector('.popup__close-button_enlarge');
         image.src = cardElement.querySelector('.card__top').src;
+        image.alt = cardElement.querySelector('.card__text').textContent;
         imageName.textContent = cardElement.querySelector('.card__text').textContent;
         openPopup(imagePopup);
         imageCloseButton.addEventListener('click', function(){
-            document.querySelector('.popup_opened').classList.remove('popup_opened');
+           // document.querySelector('.popup_opened').classList.remove('popup_opened');
+           closePopup(imagePopup);
         });
 
     });
