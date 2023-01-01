@@ -1,16 +1,15 @@
-//const Popup = document.querySelector('.popup');
 const editPopup = document.querySelector('#edit-popup');
 const cardPopup = document.querySelector('#card-popup');
 const editButton = document.querySelector('.profile__edit-button');
 const closeButton = document.querySelector('.popup__close-button');
-//const editForm = document.querySelector('.edit-form');
 const editForm = document.forms["editForm"];
-//const cardForm = document.querySelector('#card-form');
-const cardFrom = document.forms["cardForm"];
+const cardForm = document.forms["cardForm"];
 const nameProfile = document.querySelector('.profile__info-name');
 const jobProfile = document.querySelector('.profile__info-job');
-const nameInput = document.querySelector('.edit-form__input_name');
-const jobInput = document.querySelector('.edit-form__input_job');
+//const formInput = editForm.querySelector('.edit-form__input');
+//const formError = editForm.querySelector(`.${formInput.id}-error`);
+const nameInput = editForm.querySelector('.edit-form__input_name');
+const jobInput = editForm.querySelector('.edit-form__input_job');
 const addButton = document.querySelector('.profile__add-button');
 const cardClose = document.querySelector('#card-close');
 const cardsContainer = document.querySelector('.cards');
@@ -63,7 +62,6 @@ function addCard (name, src) {
         imageName.textContent = cardElement.querySelector('.card__text').textContent;
         openPopup(imagePopup);
         imageCloseButton.addEventListener('click', function(){
-           // document.querySelector('.popup_opened').classList.remove('popup_opened');
            closePopup(imagePopup);
         });
 
@@ -134,22 +132,49 @@ function handleCardFormSubmit(evt) {
 //ОТПРАВКА ФОРМЫ КАРТОЧКИ
 cardForm.addEventListener('submit', handleCardFormSubmit);
 
-//ФУНКЦИЯ ОТКРЫТИЯ ПОПАП_ИЗОБРАЖЕНИЯ
-//function openImagePopup(evt) {
-  //  const card = evt.target;
-    //const Image = ImagePopup.querySelector('.popup__image-container');
-    //const ImageName = ImagePopup.querySelector('.popup__image-title');
-    //Image.src = card.src;
-    //ImageName.textContent = card.name;
-    //openPopup(ImagePopup);
-//}
-
-
-//ОТКРЫТИЕ ПОПАП_ИЗОБРАЖЕНИЯ
-
-function togglePopup(evt) {
-    evt.target.classList.toggle('popup_opened');
+//ФУНКЦИЯ ДОБАВЛЯЩАЯ КЛАСС С ОШИБКОЙ
+const showInputError = (formElement, inputElement, error) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.add('edit-form__input_type_error');
+    errorElement.textContent = error;
+    errorElement.classList.add('edit-form__input-error_active');
 }
 
+//ФУНКЦИЯ УДАЛЯЮЩАЯ КЛАСС С ОШИБКОЙ
+const hideInputError = (formElement, inputElement) => {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove('edit-form__input_type_error');
+    errorElement.classList.remove('edit-form__input-error_active');
+    errorElement.textContent = '';
+}
+
+//ФУНКЦИЯ ВАЛИДНОСТЬ ПОЛЯ
+const isValid = (formElement, inputElement) => {
+    if(!inputElement.validity.valid) {
+        showInputError(formElement, inputElement, inputElement.validationMessage);
+    } else {
+        hideInputError(formElement, inputElement);
+    }
+}
+
+const setEventListeners = (formElement) => {
+    const formInputs = Array.from(formElement.querySelectorAll('.edit-form__input'));
+
+    formInputs.forEach((inputElement) => {
+        inputElement.addEventListener('input', () => {
+            isValid(formElement, inputElement)
+        });
+    });
+};
+
+const enableValidation = () => {
+    const forms = Array.from(document.querySelectorAll('.edit-form'));
+
+    forms.forEach((formElement) => {
+        setEventListeners(formElement);
+    });
+};
+
+enableValidation();
 
 

@@ -10,3 +10,7 @@
 .edit-form__input:first-child {
     margin-bottom: 30px;
 }
+
+.edit-form__input:invalid {
+    margin-bottom: 0;
+}

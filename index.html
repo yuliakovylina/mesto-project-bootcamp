@@ -124,22 +124,32 @@
           id="edit-close"
         ></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
-        <form class="edit-form" name="editForm">
+        <form class="edit-form" name="editForm" novalidate>
           <div class="edit-form__inputs">
             <input
+              id="input-name"
               type="text"
               class="edit-form__input edit-form__input_name"
               value=""
               name="name"
-              placeholder=""
+              placeholder="Имя"
+              required
+              maxlength="40"
+              minlength="2"
             />
+            <span class="input-name-error edit-form__input-error"></span>
             <input
+              id="input-job"
               type="text"
               class="edit-form__input edit-form__input_job"
               value=""
               name="job"
-              placeholder=""
+              placeholder="О себе"
+              minlength="2"
+              maxlength="200"
+              required
             />
+            <span class="input-job-error edit-form__input-error"></span>
           </div>
           <button type="submit" class="edit-form__submit-button">
             Сохранить
