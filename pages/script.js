@@ -6,10 +6,10 @@ const editForm = document.forms["editForm"];
 const cardForm = document.forms["cardForm"];
 const nameProfile = document.querySelector('.profile__info-name');
 const jobProfile = document.querySelector('.profile__info-job');
-//const formInput = editForm.querySelector('.edit-form__input');
-//const formError = editForm.querySelector(`.${formInput.id}-error`);
 const nameInput = editForm.querySelector('.edit-form__input_name');
 const jobInput = editForm.querySelector('.edit-form__input_job');
+const placeInput = cardForm.querySelector('.edit-form__input_placeName');
+const linkInput = cardForm.querySelector('.edit-form__input_placeSrc');
 const addButton = document.querySelector('.profile__add-button');
 const cardClose = document.querySelector('#card-close');
 const cardsContainer = document.querySelector('.cards');
@@ -116,6 +116,8 @@ closeButton.addEventListener('click', function () {
 //ДОБАВЛЕНИЕ КАРТОЧКИ
 addButton.addEventListener('click', function () {
     openPopup(cardPopup);
+    placeInput.value = "";
+    linkInput.value = "";
 })
 //ЗАКРЫТИЕ ФОРМЫ КАРТОЧКИ
 cardClose.addEventListener('click', function () {
@@ -157,16 +159,37 @@ const isValid = (formElement, inputElement) => {
     }
 }
 
+//ЕСТЬ ЛИ НЕВАЛИДНЫЕ ПОЛЯ : ДА/НЕТ
+const hasInvalidInput = (formInputs) => {
+    return formInputs.some((inputElement) => {
+        return !inputElement.validity.valid;
+    })
+}
+
+//ПЕРКЛЮЧАЕМ СОСТОЯНИЕ КНОПКИ ЕСЛИ ЕСТЬ НЕВАЛИДНОЕ ПОЛЕ
+const toggleButtonState = (formInputs, buttonElement) => {
+    if (hasInvalidInput(formInputs)) {
+        buttonElement.classList.add('edit-form__submit-button_inactive');
+    } else {
+        buttonElement.classList.remove('edit-form__submit-button_inactive');
+    }
+}
+
+//СЛУШАЕМ ВСЕ ИНПУТЫ НА ВАЛИДНОСТЬ И ВЫЗЫВАЕМ СОСТОЯНИЕ КНОПКИ
 const setEventListeners = (formElement) => {
     const formInputs = Array.from(formElement.querySelectorAll('.edit-form__input'));
+    const buttonElement = formElement.querySelector('.edit-form__submit-button');
+    toggleButtonState(formInputs, buttonElement);
 
     formInputs.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
-            isValid(formElement, inputElement)
+            isValid(formElement, inputElement);
+            toggleButtonState(formInputs, buttonElement);
         });
     });
 };
 
+//СЛУШАЕМ ВСЕ ФОРМЫ НА ВАЛИДНОСТЬ
 const enableValidation = () => {
     const forms = Array.from(document.querySelectorAll('.edit-form'));
 
@@ -177,4 +200,20 @@ const enableValidation = () => {
 
 enableValidation();
 
+//ЗАКРЫТИЕ ПОПАПА КЛИКОМ НА ОВЕРЛЕЙ
+function clickCloseOverlay(evt) {
+    closePopup(evt.target);
+}
 
+
+//ЗАКРЫТИЕ ПОПАПА НАЖАТИЕМ НА ESC
+function escapeListener (evt) {
+    const popups = Array.from(document.querySelectorAll('.popup'));
+    if (evt.key === 'Escape') {
+        popups.forEach((popup) => {
+            closePopup(popup);
+        })
+    }
+}
+document.addEventListener('keydown', escapeListener);
+document.addEventListener('click', clickCloseOverlay);

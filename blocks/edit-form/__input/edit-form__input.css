@@ -7,10 +7,8 @@
     font-size: 14px;
 }
 
-.edit-form__input:first-child {
+.edit-form__input:first-of-type {
     margin-bottom: 30px;
 }
 
-.edit-form__input:invalid {
-    margin-bottom: 0;
-}
+
