@@ -1,22 +1,8 @@
-
-
-const editPopup = document.querySelector('#edit-popup');
-const cardPopup = document.querySelector('#card-popup');
-const editButton = document.querySelector('.profile__edit-button');
-const closeButton = document.querySelector('.popup__close-button');
-const editForm = document.forms["editForm"];
-const cardForm = document.forms["cardForm"];
-const nameProfile = document.querySelector('.profile__info-name');
-const jobProfile = document.querySelector('.profile__info-job');
-const nameInput = editForm.querySelector('.edit-form__input_name');
-const jobInput = editForm.querySelector('.edit-form__input_job');
-const placeInput = cardForm.querySelector('.edit-form__input_placeName');
-const linkInput = cardForm.querySelector('.edit-form__input_placeSrc');
-const addButton = document.querySelector('.profile__add-button');
-const cardClose = document.querySelector('#card-close');
-const cardsContainer = document.querySelector('.cards');
-const imagePopup = document.querySelector('#image-popup');
-
+import { formSelectors, enableValidation } from "./components/validate.js";
+import { addCard, removeCard, handleCardFormSubmit, toggleLike } from "./components/card.js";
+import { openPopup, closePopup, handleEditFormSubmit, clickCloseOverlay, escapeListener } from "./components/modal.js";
+import { editPopup, cardPopup, editButton, closeButton, editForm, cardForm, nameProfile, jobProfile, jobInput,
+nameInput, placeInput, linkInput, addButton, cardClose, cardsContainer, imagePopup} from "./components/data.js";
 
 const initialCards = [
     {
@@ -51,11 +37,6 @@ initialCards.forEach (function (item) {
     cardsContainer.prepend(addCard(item.name, item.src));
 });
 
-//КНОПКА ЛАЙКА
-function toggleLike(evt){
-    evt.target.classList.toggle('card__like-button_active');
-}
-
 //ОТПРАВКА ФОРМЫ ПРОФИЛЯ
 editForm.addEventListener('submit', handleEditFormSubmit);
 
@@ -88,4 +69,6 @@ cardForm.addEventListener('submit', handleCardFormSubmit);
 document.addEventListener('keydown', escapeListener);
 document.addEventListener('click', clickCloseOverlay);
 
-enableValidation();
+enableValidation(formSelectors);
+console.log(formSelectors)
+

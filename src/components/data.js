@@ -1,0 +1,16 @@
+export const editPopup = document.querySelector('#edit-popup');
+export const cardPopup = document.querySelector('#card-popup');
+export const editButton = document.querySelector('.profile__edit-button');
+export const closeButton = document.querySelector('.popup__close-button');
+export const editForm = document.forms["editForm"];
+export const cardForm = document.forms["cardForm"];
+export const nameProfile = document.querySelector('.profile__info-name');
+export const jobProfile = document.querySelector('.profile__info-job');
+export const nameInput = editForm.querySelector('.edit-form__input_name');
+export const jobInput = editForm.querySelector('.edit-form__input_job');
+export const placeInput = cardForm.querySelector('.edit-form__input_placeName');
+export const linkInput = cardForm.querySelector('.edit-form__input_placeSrc');
+export const addButton = document.querySelector('.profile__add-button');
+export const cardClose = document.querySelector('#card-close');
+export const cardsContainer = document.querySelector('.cards');
+export const imagePopup = document.querySelector('#image-popup');

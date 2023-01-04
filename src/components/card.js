@@ -1,5 +1,7 @@
+import { closePopup } from "./modal.js";
+import { cardPopup, cardsContainer } from "./data.js";
 //ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ
-function addCard (name, src) {
+export function addCard (name, src) {
     const cardTemplate = document.querySelector('#card').content;
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     
@@ -25,13 +27,18 @@ function addCard (name, src) {
 }
 
 //ФУНКЦИЯ УДАЛЕНИЯ КАРТОЧКИ
-function removeCard(evt) {
+export function removeCard(evt) {
     const card = evt.target.closest('.card');
     card.remove();
 }
 
+//КНОПКА ЛАЙКА
+export function toggleLike(evt){
+    evt.target.classList.toggle('card__like-button_active');
+}
+
 //ОБРАБОТЧИК ФОРМЫ КАРТОЧКИ
-function handleCardFormSubmit(evt) {
+export function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const cardName = document.querySelector('.edit-form__input_placeName');
     const cardLink = document.querySelector('.edit-form__input_placeSrc');
