@@ -1,5 +1,6 @@
 import { closePopup } from "./modal.js";
 import { cardPopup, cardsContainer } from "./data.js";
+import { formSelectors } from "./validate.js";
 //ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ
 export function addCard (name, src) {
     const cardTemplate = document.querySelector('#card').content;

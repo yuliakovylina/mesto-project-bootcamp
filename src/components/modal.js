@@ -3,7 +3,7 @@ import { jobProfile, jobInput, nameProfile, nameInput, editPopup } from "./data.
 //ФУНКЦИЯ ОТКРЫТИЯ ПОПАПОВ
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
-    popup.querySelector('.edit-form__submit-button').classList.add('edit-form__submit-button_inactive')
+    popup.querySelector('.edit-form__submit-button').classList.add('edit-form__submit-button_inactive');
 }
 //ФУНКЦИЯ ЗАКРЫТИЯ ПОПАПОВ
 export function closePopup(popup) {
@@ -31,4 +31,5 @@ export function handleEditFormSubmit(evt) {
     jobProfile.textContent = jobInput.value;
     nameProfile.textContent = nameInput.value;
     closePopup(editPopup);
+    evt.target.reset();
 }

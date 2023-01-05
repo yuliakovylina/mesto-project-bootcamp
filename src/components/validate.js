@@ -7,7 +7,6 @@ export const formSelectors = {
     errorClass: "edit-form__input-error_active"
 }
 
-console.log(formSelectors)
 //ФУНКЦИЯ ДОБАВЛЯЩАЯ КЛАСС С ОШИБКОЙ
 const showInputError = (formElement, inputElement, error, formSelectors) => {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -22,14 +21,15 @@ const hideInputError = (formElement, inputElement, formSelectors) => {
     inputElement.classList.remove(formSelectors.inputErrorClass);
     errorElement.textContent = '';
     errorElement.classList.remove(formSelectors.errorClass);
+
 }
 
 //ФУНКЦИЯ ВАЛИДНОСТЬ ПОЛЯ
 const isValid = (formElement, inputElement, formSelectors) => {
-    if(!inputElement.validity.valid) {
-        showInputError(formElement, inputElement, inputElement.validationMessage, formSelectors);
-    } else {
+    if(inputElement.validity.valid) {
         hideInputError(formElement, inputElement, formSelectors);
+    } else {
+        showInputError(formElement, inputElement, inputElement.validationMessage, formSelectors);
     }
 }
 

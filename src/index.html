@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!--<link rel="stylesheet" href="./pages/index.css" />-->
     <title>Mesto</title>
   </head>
   <body class="root">
     <header class="header">
-      <img class="logo" alt="Логотип Место" src="./images/logo.svg" />
+      <img class="logo" alt="Логотип Место" src="<%=require('./images/logo.svg')%>">
     </header>
     <main class="content">
       <section class="profile">
@@ -17,7 +17,7 @@
           <img
             class="profile__avatar"
             alt="Аватар"
-            src="./images/IMG_20210306_104200_820.jpg"
+            src="<%=require('./images/IMG_20210306_104200_820.jpg')%>"
           />
           <div class="profile__info">
             <div class="profile__info-text">
@@ -206,14 +206,14 @@
         id="image-close"
       ></button>
       <img class="popup__image-container" />
-      <h4 class="popup__image-title">Петергоф</h4>
+      <h4 class="popup__image-title"></h4>
     </div>
 
-    <script type="module" src="./src/components/data.js"></script>
+   <!-- <script type="module" src="./src/components/data.js"></script>
     <script type="module" src="./src/components/validate.js"></script> 
     <script type='module' src="./src/components/card.js"></script>
     <script type="module" src="./src/components/modal.js"></script>
 
-    <script type='module' src="./src/index.js"></script>
+    <script type='module' src="./src/index.js"></script>-->
   </body>
 </html>

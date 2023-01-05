@@ -3,31 +3,40 @@ import { addCard, removeCard, handleCardFormSubmit, toggleLike } from "./compone
 import { openPopup, closePopup, handleEditFormSubmit, clickCloseOverlay, escapeListener } from "./components/modal.js";
 import { editPopup, cardPopup, editButton, closeButton, editForm, cardForm, nameProfile, jobProfile, jobInput,
 nameInput, placeInput, linkInput, addButton, cardClose, cardsContainer, imagePopup} from "./components/data.js";
+import "./pages/index.css";
+
+const bridge = new URL("./images/bridge.jpg", import.meta.url);
+const dvortsovaia = new URL("./images/dvortsovaia.jpg", import.meta.url);
+const kanaly = new URL("./images/kanaly.jpg", import.meta.url);
+const kazansky = new URL("./images/kazansky.jpg", import.meta.url);
+const petergof = new URL("./images/petergof.jpg", import. meta.url);
+const roofs = new URL("./images/roofs.jpg", import.meta.url);
+
 
 const initialCards = [
     {
         name: 'Мосты',
-        src: './images/bridge.jpg'
+        src: bridge
     },
     {
         name: 'Дворцовая площадь',
-        src: './images/dvortsovaia.jpg'
+        src: dvortsovaia
     },
     {
         name: 'Реки и каналы',
-        src: './images/kanaly.jpg'
+        src: kanaly
     },
     {
         name: 'Казанский собор',
-        src: './images/kazansky.jpg'
+        src: kazansky
     },
     {
         name: 'Петергоф',
-        src: './images/petergof.jpg'
+        src: petergof
     },
     {
         name: 'Дворы и крыши',
-        src: './images/roofs.jpg'
+        src: roofs
     },
 ]
 
@@ -54,9 +63,8 @@ closeButton.addEventListener('click', function () {
 //ДОБАВЛЕНИЕ КАРТОЧКИ
 addButton.addEventListener('click', function () {
     openPopup(cardPopup);
-    placeInput.value = "";
-    linkInput.value = "";
-    //cardPopup.querySelector('.edit-form__submit-button').classList.add('edit-form__submit-button_inactive')
+    cardForm.reset();
+    
 })
 //ЗАКРЫТИЕ ФОРМЫ КАРТОЧКИ
 cardClose.addEventListener('click', function () {
@@ -70,5 +78,3 @@ document.addEventListener('keydown', escapeListener);
 document.addEventListener('click', clickCloseOverlay);
 
 enableValidation(formSelectors);
-console.log(formSelectors)
-
