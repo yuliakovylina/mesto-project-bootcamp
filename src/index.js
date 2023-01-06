@@ -1,6 +1,6 @@
 import { formSelectors, enableValidation } from "./components/validate.js";
 import { addCard, removeCard, handleCardFormSubmit, toggleLike } from "./components/card.js";
-import { openPopup, closePopup, handleEditFormSubmit, clickCloseOverlay, escapeListener } from "./components/modal.js";
+import { openPopup, closePopup, handleEditFormSubmit, clickCloseOverlay, escapeListener, removeEscapeClick, setEscapeClick } from "./components/modal.js";
 import { editPopup, cardPopup, editButton, closeButton, editForm, cardForm, nameProfile, jobProfile, jobInput,
 nameInput, placeInput, linkInput, addButton, cardClose, cardsContainer, imagePopup} from "./components/data.js";
 import "./pages/index.css";
@@ -51,9 +51,14 @@ editForm.addEventListener('submit', handleEditFormSubmit);
 
 //РЕДАКТИРОВАНИЕ ПРОФИЛЯ
 editButton.addEventListener('click', function () {
-   openPopup(editPopup);
    nameInput.value = nameProfile.textContent;
    jobInput.value = jobProfile.textContent;
+  // if (document.querySelector('.input-name-error').classList.contains(formSelectors.errorClass) || 
+  // document.querySelector('.input-job-error').classList.contains(formSelectors.errorClass)){
+       // removeEscapeClick();
+       // closePopup(editPopup);
+  // }
+   openPopup(editPopup);
 })
 //ЗАКРЫТИЕ ПОПАПОВ
 closeButton.addEventListener('click', function () {
@@ -73,8 +78,5 @@ cardClose.addEventListener('click', function () {
 
 //ОТПРАВКА ФОРМЫ КАРТОЧКИ
 cardForm.addEventListener('submit', handleCardFormSubmit);
-
-document.addEventListener('keydown', escapeListener);
-document.addEventListener('click', clickCloseOverlay);
 
 enableValidation(formSelectors);

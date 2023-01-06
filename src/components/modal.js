@@ -3,11 +3,13 @@ import { jobProfile, jobInput, nameProfile, nameInput, editPopup } from "./data.
 //ФУНКЦИЯ ОТКРЫТИЯ ПОПАПОВ
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
-    popup.querySelector('.edit-form__submit-button').classList.add('edit-form__submit-button_inactive');
+    setEscapeClick(popup);
 }
 //ФУНКЦИЯ ЗАКРЫТИЯ ПОПАПОВ
 export function closePopup(popup) {
+    removeEscapeClick(popup);
     popup.classList.remove('popup_opened');
+
 }
 //ЗАКРЫТИЕ ПОПАПА КЛИКОМ НА ОВЕРЛЕЙ
 export function clickCloseOverlay(evt) {
@@ -32,4 +34,14 @@ export function handleEditFormSubmit(evt) {
     nameProfile.textContent = nameInput.value;
     closePopup(editPopup);
     evt.target.reset();
+}
+
+export function setEscapeClick (elem) {
+    document.addEventListener('keydown', escapeListener);
+    elem.addEventListener('click', clickCloseOverlay);
+}
+
+export function removeEscapeClick (elem) {
+    document.removeEventListener('keydown', escapeListener);
+    elem.removeEventListener('click', clickCloseOverlay);
 }

@@ -1,5 +1,5 @@
-import { closePopup } from "./modal.js";
-import { cardPopup, cardsContainer } from "./data.js";
+import { closePopup, openPopup } from "./modal.js";
+import { cardPopup, cardsContainer, imagePopup } from "./data.js";
 import { formSelectors } from "./validate.js";
 //ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ
 export function addCard (name, src) {
@@ -43,6 +43,9 @@ export function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const cardName = document.querySelector('.edit-form__input_placeName');
     const cardLink = document.querySelector('.edit-form__input_placeSrc');
+    const submitButton = cardPopup.querySelector('.edit-form__submit-button');
+    submitButton.classList.add('edit-form__submit-button_inactive');
+    submitButton.setAttribute('disabled', 'true');
     closePopup(cardPopup);
     cardsContainer.prepend(addCard(cardName.value, cardLink.value));
     evt.target.reset();
