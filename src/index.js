@@ -1,8 +1,9 @@
 import { formSelectors, enableValidation } from "./components/validate.js";
 import { addCard, removeCard, handleCardFormSubmit, toggleLike } from "./components/card.js";
-import { openPopup, closePopup, handleEditFormSubmit, clickCloseOverlay, escapeListener, removeEscapeClick, setEscapeClick } from "./components/modal.js";
+import { handleEditFormSubmit, clickCloseOverlay, escapeListener, removeEscapeClick, setEscapeClick } from "./components/modal.js";
 import { editPopup, cardPopup, editButton, closeButton, editForm, cardForm, nameProfile, jobProfile, jobInput,
 nameInput, placeInput, linkInput, addButton, cardClose, cardsContainer, imagePopup} from "./components/data.js";
+import { openPopup, closePopup } from './components/utils.js';
 import "./pages/index.css";
 
 const bridge = new URL("./images/bridge.jpg", import.meta.url);
@@ -53,11 +54,7 @@ editForm.addEventListener('submit', handleEditFormSubmit);
 editButton.addEventListener('click', function () {
    nameInput.value = nameProfile.textContent;
    jobInput.value = jobProfile.textContent;
-  // if (document.querySelector('.input-name-error').classList.contains(formSelectors.errorClass) || 
-  // document.querySelector('.input-job-error').classList.contains(formSelectors.errorClass)){
-       // removeEscapeClick();
-       // closePopup(editPopup);
-  // }
+
    openPopup(editPopup);
 })
 //ЗАКРЫТИЕ ПОПАПОВ
@@ -68,8 +65,6 @@ closeButton.addEventListener('click', function () {
 //ДОБАВЛЕНИЕ КАРТОЧКИ
 addButton.addEventListener('click', function () {
     openPopup(cardPopup);
-    cardForm.reset();
-    
 })
 //ЗАКРЫТИЕ ФОРМЫ КАРТОЧКИ
 cardClose.addEventListener('click', function () {

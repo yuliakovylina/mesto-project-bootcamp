@@ -1,31 +1,20 @@
-import { jobProfile, jobInput, nameProfile, nameInput, editPopup } from "./data.js";
+import { jobProfile, jobInput, nameProfile, nameInput, editPopup, popups } from "./data.js";
+import { openPopup, closePopup } from "./utils.js";
 
-//ФУНКЦИЯ ОТКРЫТИЯ ПОПАПОВ
-export function openPopup(popup) {
-    popup.classList.add('popup_opened');
-    setEscapeClick(popup);
-}
-//ФУНКЦИЯ ЗАКРЫТИЯ ПОПАПОВ
-export function closePopup(popup) {
-    removeEscapeClick(popup);
-    popup.classList.remove('popup_opened');
-
-}
 //ЗАКРЫТИЕ ПОПАПА КЛИКОМ НА ОВЕРЛЕЙ
 export function clickCloseOverlay(evt) {
-    closePopup(evt.target);
+    if (evt.target === evt.currentTarget) {
+        closePopup(evt.target);
+    }
 }
 
 
 //ЗАКРЫТИЕ ПОПАПА НАЖАТИЕМ НА ESC
 export function escapeListener (evt) {
-    const popups = Array.from(document.querySelectorAll('.popup'));
     if (evt.key === 'Escape') {
-        popups.forEach((popup) => {
-            closePopup(popup);
-        })
+        popups.forEach(closePopup);
+        }
     }
-}
 
 //ОБРАБОТЧИК ФОРМЫ ПРОФИЛЯ
 export function handleEditFormSubmit(evt) {

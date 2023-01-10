@@ -1,10 +1,8 @@
-import { closePopup, openPopup } from "./modal.js";
-import { cardPopup, cardsContainer, imagePopup } from "./data.js";
+import { closePopup, openPopup } from "./utils.js";
+import { cardPopup, cardsContainer, cardName, cardLink, submitButton, image, imageName, imageCloseButton, imagePopup } from "./data.js";
 import { formSelectors } from "./validate.js";
 
-const image = imagePopup.querySelector('.popup__image-container');
-const imageName = imagePopup.querySelector('.popup__image-title');
-const imageCloseButton = imagePopup.querySelector('.popup__close-button_enlarge');
+
 //ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ
 export function addCard (name, src) { 
     const cardTemplate = document.querySelector('#card').content;
@@ -42,9 +40,6 @@ export function toggleLike(evt){
 //ОБРАБОТЧИК ФОРМЫ КАРТОЧКИ
 export function handleCardFormSubmit(evt) {
     evt.preventDefault();
-    const cardName = document.querySelector('.edit-form__input_placeName');
-    const cardLink = document.querySelector('.edit-form__input_placeSrc');
-    const submitButton = cardPopup.querySelector('.edit-form__submit-button');
     submitButton.classList.add('edit-form__submit-button_inactive');
     submitButton.setAttribute('disabled', 'true');
     closePopup(cardPopup);
