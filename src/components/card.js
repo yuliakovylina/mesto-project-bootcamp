@@ -1,29 +1,30 @@
 import { closePopup, openPopup } from "./modal.js";
 import { cardPopup, cardsContainer, imagePopup } from "./data.js";
 import { formSelectors } from "./validate.js";
+
+const image = imagePopup.querySelector('.popup__image-container');
+const imageName = imagePopup.querySelector('.popup__image-title');
+const imageCloseButton = imagePopup.querySelector('.popup__close-button_enlarge');
 //ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ
-export function addCard (name, src) {
+export function addCard (name, src) { 
     const cardTemplate = document.querySelector('#card').content;
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-    
-    cardElement.querySelector('.card__text').textContent = name;
-    cardElement.querySelector('.card__top').src = src;
-    cardElement.querySelector('.card__top').alt = name;
+    const cardImage = cardElement.querySelector('.card__top');
+    const cardText = cardElement.querySelector('.card__text');
+    cardText.textContent = name;
+    cardImage.src = src;
+    cardImage.alt = name;
     cardElement.querySelector('.card__like-button').addEventListener('click', toggleLike);
     cardElement.querySelector('.card__delete').addEventListener('click', removeCard); 
-    cardElement.querySelector('.card__top').addEventListener('click', function () {
-        const image = imagePopup.querySelector('.popup__image-container');
-        const imageName = imagePopup.querySelector('.popup__image-title');
-        const imageCloseButton = imagePopup.querySelector('.popup__close-button_enlarge');
-        image.src = cardElement.querySelector('.card__top').src;
-        image.alt = cardElement.querySelector('.card__text').textContent;
-        imageName.textContent = cardElement.querySelector('.card__text').textContent;
+    cardImage.addEventListener('click', function () {
+        image.src = cardImage.src;
+        image.alt = cardText.textContent;
+        imageName.textContent = cardText.textContent;
         openPopup(imagePopup);
-        imageCloseButton.addEventListener('click', function(){
-           closePopup(imagePopup);
-        });
-
     });
+    imageCloseButton.addEventListener('click', function(){
+        closePopup(imagePopup);
+     });
     return cardElement;
 }
 
