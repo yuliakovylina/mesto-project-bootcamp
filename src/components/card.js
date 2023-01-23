@@ -3,6 +3,7 @@ import { cardPopup, cardsContainer, cardName, cardLink, submitButton, image, ima
 import { formSelectors } from "./validate.js";
 
 
+
 //ФУНКЦИЯ ДОБАВЛЕНИЯ КАРТОЧКИ
 export function addCard (name, src) { 
     const cardTemplate = document.querySelector('#card').content;
@@ -40,8 +41,8 @@ export function toggleLike(evt){
 //ОБРАБОТЧИК ФОРМЫ КАРТОЧКИ
 export function handleCardFormSubmit(evt) {
     evt.preventDefault();
-    submitButton.classList.add('edit-form__submit-button_inactive');
-    submitButton.setAttribute('disabled', 'true');
+    //submitButton.classList.add('edit-form__submit-button_inactive');
+   // submitButton.setAttribute('disabled', 'true');
     closePopup(cardPopup);
     cardsContainer.prepend(addCard(cardName.value, cardLink.value));
     evt.target.reset();

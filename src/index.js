@@ -2,9 +2,10 @@ import { formSelectors, enableValidation } from "./components/validate.js";
 import { addCard, removeCard, handleCardFormSubmit, toggleLike } from "./components/card.js";
 import { handleEditFormSubmit, clickCloseOverlay, escapeListener, removeEscapeClick, setEscapeClick } from "./components/modal.js";
 import { editPopup, cardPopup, editButton, closeButton, editForm, cardForm, nameProfile, jobProfile, jobInput,
-nameInput, placeInput, linkInput, addButton, cardClose, cardsContainer, imagePopup} from "./components/data.js";
+nameInput, placeInput, linkInput, addButton, cardClose, cardsContainer, imagePopup, avatarProfile} from "./components/data.js";
 import { openPopup, closePopup } from './components/utils.js';
 import "./pages/index.css";
+import { getUser, getCards } from "./components/api.js";
 
 const bridge = new URL("./images/bridge.jpg", import.meta.url);
 const dvortsovaia = new URL("./images/dvortsovaia.jpg", import.meta.url);
@@ -74,4 +75,20 @@ cardClose.addEventListener('click', function () {
 //ОТПРАВКА ФОРМЫ КАРТОЧКИ
 cardForm.addEventListener('submit', handleCardFormSubmit);
 
-enableValidation(formSelectors);
+Promise.all([getUser(), getCards()])
+    .then(([users, cards]) => {
+        nameProfile.id = users._id;
+        nameProfile.textContent = users.name;
+        jobProfile.textContent = users.about;
+        avatarProfile.src = users.avatar;
+        nameInput.value = users.name;
+        jobInput.value = users.about;
+        cards.reverse().forEach(() => {
+            console.log('data');
+            cardsContainer.prepend(addCard(data))
+        })
+        enableValidation(formSelectors);
+    })
+    .catch((err) => {
+        console.log(`Ошибка: ${err}`)
+    });
