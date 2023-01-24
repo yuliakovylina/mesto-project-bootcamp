@@ -26,6 +26,7 @@ export function handleEditFormSubmit(evt) {
             nameProfile.id = res._id;
             jobProfile.textContent = res.about;
             nameProfile.textContent = res.name;
+            evt.target.reset();
             closePopup(editPopup);
         })
         .catch((err) => {
@@ -34,7 +35,6 @@ export function handleEditFormSubmit(evt) {
         .finally( () => {
             renderLoading(false, submitButtonProfile)
         })
-    evt.target.reset();
 }
 
 export function handleAvatarEdit(evt) {
@@ -74,10 +74,10 @@ export function handleDeleteCard(evt) {
 
 export function setEscapeClick (elem) {
     document.addEventListener('keydown', escapeListener);
-    elem.addEventListener('click', clickCloseOverlay);
+    elem.addEventListener('mousedown', clickCloseOverlay);
 }
 
 export function removeEscapeClick (elem) {
     document.removeEventListener('keydown', escapeListener);
-    elem.removeEventListener('click', clickCloseOverlay);
+    elem.removeEventListener('mousedown', clickCloseOverlay);
 }
