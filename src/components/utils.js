@@ -11,3 +11,11 @@ export function closePopup(popup) {
     popup.classList.remove('popup_opened');
 
 }
+
+export const renderLoading = (isLoading, button, buttonText="Сохранить", loadingText="Сохранение...") => {
+    if (isLoading) {
+        button.textContent = loadingText
+    } else {
+        button.textContent = buttonText
+    }
+}
