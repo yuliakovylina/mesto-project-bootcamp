@@ -93,6 +93,7 @@
           <button
             type="submit"
             class="edit-form__submit-button edit-form__submit-button_inactive"
+            disabled
           >
             Сохранить
           </button>
@@ -133,7 +134,7 @@
             />
             <span class="input-link-error edit-form__input-error"></span>
           </div>
-          <button type="submit" class="edit-form__submit-button">
+          <button type="submit" class="edit-form__submit-button disabled">
             Сохранить
           </button>
         </form>
@@ -169,10 +170,32 @@
             placeholder="Ссылка на аватар"
             required
           />
-          <span class="input-avatar-error edit-form__input-error"></span>
+          <span
+            class="input-avatar-error edit-form__input-error edit-form__input-error_delete"
+          ></span>
 
-          <button type="submit" class="edit-form__submit-button">
+          <button type="submit" class="edit-form__submit-button" disabled>
             Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup" id="delete-popup">
+      <div class="popup__container">
+        <button
+          type="button"
+          class="popup__close-button"
+          id="delete-close"
+        ></button>
+        <h2 class="popup__heading popup__heading_delete">Вы уверены?</h2>
+        <form class="edit-form" name="deleteForm" id="" novalidate>
+          <button
+            type="submit"
+            class="edit-form__submit-button edit-form__submit-button"
+            disabled
+          >
+            Да
           </button>
         </form>
       </div>

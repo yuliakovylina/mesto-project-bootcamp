@@ -1,8 +1,8 @@
 import { formSelectors, enableValidation } from "./components/validate.js";
 import { addCard, removeCard, handleCardFormSubmit, toggleLike, createCard } from "./components/card.js";
-import { handleEditFormSubmit, clickCloseOverlay, escapeListener, removeEscapeClick, setEscapeClick, handleAvatarEdit } from "./components/modal.js";
+import { handleEditFormSubmit, clickCloseOverlay, escapeListener, removeEscapeClick, setEscapeClick, handleAvatarEdit, handleDeleteCard } from "./components/modal.js";
 import { editPopup, cardPopup, editButton, closeButton, editForm, cardForm, avatarForm, nameProfile, jobProfile, jobInput,
-nameInput, placeInput, linkInput, addButton, cardClose, cardsContainer, imagePopup, avatarProfile, avatarEditPopupButton, avatarPopup, avatarCloseButton} from "./components/data.js";
+nameInput, placeInput, linkInput, addButton, cardClose, imageCloseButton, cardsContainer, imagePopup, avatarProfile, avatarEditPopupButton, avatarPopup, avatarCloseButton, closeButtons, deleteCardPopup, submitButtonDelete, deleteCardForm, deleteCardClose} from "./components/data.js";
 import { openPopup, closePopup } from './components/utils.js';
 import "./pages/index.css";
 import { getUser, getCards } from "./components/api.js";
@@ -72,6 +72,10 @@ cardClose.addEventListener('click', function () {
 
 cardForm.addEventListener('submit', handleCardFormSubmit);
 
+imageCloseButton.addEventListener('click', function(){
+    closePopup(imagePopup);
+ });
+
 avatarForm.addEventListener('submit', handleAvatarEdit);
 
 avatarEditPopupButton.addEventListener('click', function () {
@@ -80,6 +84,11 @@ avatarEditPopupButton.addEventListener('click', function () {
 
 avatarCloseButton.addEventListener('click', function () {
     closePopup(avatarPopup);
+})
+
+deleteCardForm.addEventListener('submit', handleDeleteCard);
+deleteCardClose.addEventListener('click', function () {
+    closePopup(deleteCardPopup);
 })
 
 Promise.all([getUser(), getCards()])

@@ -46,7 +46,7 @@ export const addCardServer = (data) => {
     .then( res => checkRes(res))
 }
 
-export const deleteCardServer = () => {
+export const deleteCardServer = (id) => {
     return fetch(`${config.baseUrl}/cards/` + id, {
         method: "DELETE",
         headers: config.headers

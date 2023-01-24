@@ -1,9 +1,9 @@
 import { closePopup, openPopup, renderLoading } from "./utils.js";
-import { cardPopup, cardsContainer, cardName, cardLink, image, imageName, imageCloseButton, imagePopup, submitButtonCards, nameProfile, placeInput, linkInput } from "./data.js";
-import { addCardServer, removeLike, addLike } from "./api.js";
+import { cardTemplate, cardPopup, cardsContainer, image, imageName, imageCloseButton, imagePopup, submitButtonCards, nameProfile, placeInput, linkInput, deleteCardPopup } from "./data.js";
+import { addCardServer, removeLike, addLike, deleteCardServer } from "./api.js";
 
-export const addCard = (data) => { 
-    const cardTemplate = document.querySelector('#card').content;
+
+    export const addCard = (data) => { 
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
     cardElement.id = data._id;
     
@@ -28,17 +28,20 @@ export const addCard = (data) => {
     cardRemove.addEventListener('click', removeCard); 
     disableRemoveCard(data, cardRemove);
 
-    imageCloseButton.addEventListener('click', function(){
-        closePopup(imagePopup);
-     });
     return cardElement;
 }
 
 //ФУНКЦИЯ УДАЛЕНИЯ КАРТОЧКИ
 export function removeCard(evt) {
-    const card = evt.target.closest('.card');
-    card.remove();
+  //  const card = evt.target.closest('.card');
+   //card.remove();
+   const card = evt.target.closest('.card')
+   openPopup(deleteCardPopup)
+   deleteCardPopup.id = card.id
 }
+
+//export function handleCardDelete
+
 
 export function handleCardFormSubmit(evt) {
     evt.preventDefault();

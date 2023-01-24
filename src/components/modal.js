@@ -1,6 +1,6 @@
-import { jobProfile, jobInput, nameProfile, nameInput, editPopup, popups , submitButtonProfile, avatarProfile, submitButtonAvatar, avatarPopup, avatarInput} from "./data.js";
+import { jobProfile, jobInput, nameProfile, nameInput, editPopup, popups , submitButtonProfile, avatarProfile, submitButtonAvatar, avatarPopup, avatarInput, deleteCardForm, deleteCardPopup, submitButtonDelete} from "./data.js";
 import { closePopup, renderLoading } from "./utils.js";
-import { editAvatar, editProfile } from "./api.js";
+import { deleteCardServer, editAvatar, editProfile } from "./api.js";
 
 //ЗАКРЫТИЕ ПОПАПА КЛИКОМ НА ОВЕРЛЕЙ
 export function clickCloseOverlay(evt) {
@@ -52,6 +52,24 @@ export function handleAvatarEdit(evt) {
     .finally(() => {
         renderLoading(false, submitButtonAvatar)
     })
+}
+
+export function handleDeleteCard(evt) {
+    evt.preventDefault();
+    renderLoading(true, submitButtonDelete, "Да", "Удаление...")
+    const deleteCardId = deleteCardPopup.id
+    deleteCardServer(deleteCardPopup.id)
+        .then((res) => {
+            deleteCardPopup.id = ''
+            document.getElementById(`${deleteCardId}`).remove()
+            closePopup(deleteCardPopup)
+        })
+        .catch((err) => {
+            console.log(`Ошибка: ${err}`)
+        })
+        .finally(() => {
+            renderLoading(false, submitButtonDelete, "Да", "Удаление...")
+        })
 }
 
 export function setEscapeClick (elem) {
